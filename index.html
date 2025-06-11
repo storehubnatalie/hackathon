@@ -1,0 +1,782 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoreHub - Point of Sale System Built for Your Business</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'storehub-orange': '#ff9419',
+                        'storehub-black': '#2f2922',
+                        'bold-orange': '#ff630f',
+                        'azure-blue': '#2a6ee8',
+                        'vivid-pink': '#ff546f'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .dropdown:hover .dropdown-menu { display: block; opacity: 1; transform: translateY(0); }
+        .dropdown-menu { display: none; opacity: 0; transform: translateY(-10px); transition: all 0.2s ease-in-out; }
+        body { font-family: 'Inter', sans-serif; }
+        .mega-menu { width: 800px; left: 50%; transform: translateX(-50%); }
+        .simple-menu { width: 280px; }
+        
+        /* Logo scroll animation */
+        .logo-scroll {
+            animation: scroll 20s linear infinite;
+        }
+        
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .logo-scroll:hover {
+            animation-play-state: paused;
+        }
+    </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=IBM+Plex+Serif:wght@300;400;500;600;700&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;family=Inter&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=IBM+Plex+Serif:wght@300;400;500;600;700&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;family=Inter&amp;display=swap" rel="stylesheet">
+</head>
+<body class="antialiased text-gray-900 bg-white">
+    <!-- Navigation Header -->
+    <nav class="bg-white shadow-sm border-b sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="/">
+                        <img src="images/StoreHub_logo.png" alt="StoreHub" class="h-6 w-auto">
+                    </a>
+                </div>
+                
+                <div class="hidden lg:flex items-center space-x-8">
+                    <div class="dropdown relative">
+                        <a href="#" class="text-gray-700 hover:text-storehub-orange font-medium text-sm flex items-center">
+                            Business Types 
+                            <i class="fas fa-chevron-down text-xs ml-1 text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu absolute top-full pt-2 z-50">
+                            <div class="bg-white rounded-lg shadow-lg border simple-menu p-6">
+                                <div class="space-y-6">
+                                    <div>
+                                        <div class="font-semibold text-gray-900 mb-3 flex items-center">
+                                            <span class="mr-2">🍽️</span> Food &amp; Beverage
+                                        </div>
+                                        <div class="ml-6 space-y-2">
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Cafes &amp; Bakeries</a>
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Restaurants</a>
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Fine Dining &amp; Specialty</a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <div class="font-semibold text-gray-900 mb-3 flex items-center">
+                                            <span class="mr-2">🛍️</span> Retail
+                                        </div>
+                                        <div class="ml-6 space-y-2">
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Grocery &amp; Supermarket</a>
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Convenience Store</a>
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Fashion and Apparel</a>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="font-semibold text-gray-900 mb-3 flex items-center">
+                                            <span class="mr-2">💅</span> Services
+                                        </div>
+                                        <div class="ml-6 space-y-2">
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Salons &amp; Spas</a>
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Professional Services</a>
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Clinics &amp; Healthcare</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dropdown relative">
+                        <a href="#" class="text-gray-700 hover:text-storehub-orange font-medium text-sm flex items-center">
+                            Products
+                            <i class="fas fa-chevron-down text-xs ml-1 text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu absolute top-full pt-2 z-50">
+                            <div class="bg-white rounded-lg shadow-lg border mega-menu p-8">
+                                <div class="grid grid-cols-4 gap-8">
+                                    <div>
+                                        <div class="font-semibold text-gray-900 mb-4">Seamless Checkouts &amp; Payments</div>
+                                        <div class="space-y-3">
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Point of Sale (POS)</a>
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Payments</a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <div class="font-semibold text-gray-900 mb-4">Run your store smoothly</div>
+                                        <div class="space-y-3">
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">QR Order &amp; Pay</a>
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">E-Invoice</a>
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Inventory Management</a>
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Kitchen Display System (KDS)</a>
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Multi Location Management</a>
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Reporting &amp; Analytics</a>
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Employee Management</a>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="font-semibold text-gray-900 mb-4">Customer Loyalty made easy</div>
+                                        <div class="space-y-3">
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Loyalty Program</a>
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Membership</a>
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Engage (CRM / Marketing Automation)</a>
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Customisable Promotions</a>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="font-semibold text-gray-900 mb-4">Reach more customers and sell online</div>
+                                        <div class="space-y-3">
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Online Ordering</a>
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Webstore</a>
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Marketplace Integration</a>
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Takeaway &amp; Pickup</a>
+                                            <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Integrated Logistics</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="text-gray-700 hover:text-storehub-orange font-medium text-sm">Hardware</a>
+
+                    <div class="dropdown relative">
+                        <a href="#" class="text-gray-700 hover:text-storehub-orange font-medium text-sm flex items-center">
+                            Pricing
+                            <i class="fas fa-chevron-down text-xs ml-1 text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu absolute top-full pt-2 z-50">
+                            <div class="bg-white rounded-lg shadow-lg border simple-menu p-4">
+                                <div class="space-y-2">
+                                    <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Build your own plan</a>
+                                    <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Offerings</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dropdown relative">
+                        <a href="#" class="text-gray-700 hover:text-storehub-orange font-medium text-sm flex items-center">
+                            Resources
+                            <i class="fas fa-chevron-down text-xs ml-1 text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu absolute top-full pt-2 z-50">
+                            <div class="bg-white rounded-lg shadow-lg border simple-menu p-4">
+                                <div class="space-y-2">
+                                    <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Blog</a>
+                                    <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Knowledgebase</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dropdown relative">
+                        <a href="#" class="text-gray-700 hover:text-storehub-orange font-medium text-sm flex items-center">
+                            Why StoreHub?
+                            <i class="fas fa-chevron-down text-xs ml-1 text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu absolute top-full pt-2 z-50">
+                            <div class="bg-white rounded-lg shadow-lg border simple-menu p-4">
+                                <div class="space-y-2">
+                                    <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">About Us</a>
+                                    <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Our Commitment</a>
+                                    <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Customer Stories</a>
+                                    <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">The Cost of Doing Nothing</a>
+                                    <a href="#" class="block text-sm text-gray-600 hover:text-storehub-orange">Be A Partner</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="text-gray-700 hover:text-storehub-orange font-medium text-sm">Sign in</a>
+                    <button class="bg-storehub-orange text-white px-6 py-2 rounded-lg font-medium text-sm hover:bg-bold-orange">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-white pt-20 pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="">
+                    <h1 class="lg:text-6xl leading-tight text-5xl font-semibold text-gray-900 mb-6">The POS System That Grows With Your Business</h1>
+                    <p class="leading-relaxed text-lg text-gray-600 mb-8">Stop losing money to manual errors, inventory chaos, and complicated systems. Get the POS that Malaysian businesses trust.</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-storehub-orange text-white px-8 py-4 rounded-lg font-semibold text-base hover:bg-bold-orange">
+                            Start free trial
+                        </button>
+                        <button class="border border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-semibold text-base hover:border-gray-400">
+                            Schedule a demo
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <img src="images/pexels-mikhail-nilov-6969962.jpg" alt="Modern POS System" class="w-full h-96 object-cover rounded-2xl shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section class="bg-gray-50 pt-20 pb-20">
+        <div class="max-w-7xl sm:px-6 lg:px-8 mr-auto ml-auto pr-4 pl-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-semibold text-gray-900 mb-4">Built for every industry</h2>
+                <p class="text-xl text-gray-600">Tailored solutions with industry-specific features</p>
+            </div>
+            
+            <div class="space-y-16">
+                <!-- Food & Beverage -->
+                <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                        <div class="pt-12 pr-12 pb-12 pl-12">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 bg-storehub-orange/10 rounded-2xl flex items-center justify-center mr-4">
+                                    <span class="text-3xl">🍽️</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-3xl font-semibold text-gray-900">Food &amp; Beverage</h3>
+                                    <p class="text-gray-600">Restaurants, cafes, bars, and food trucks</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="flex items-start">
+                                    
+                                    <div class="">
+                                        <div class="font-semibold text-gray-900">Kitchen Display System</div>
+                                        <div class="text-sm text-gray-600">Smoother prep, fewer mistakes, and faster service – without paper tickets</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    
+                                    <div class="">
+                                        <div class="font-semibold text-gray-900">QR Order &amp; Pay</div>
+                                        <div class="text-sm text-gray-600">Easy ordering experience for you and your customers</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    
+                                    <div class="">
+                                        <div class="font-semibold text-gray-900">Composite Inventory</div>
+                                        <div class="text-sm text-gray-600">Keep a close eye on your ingredients</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    
+                                    <div class="">
+                                        <div class="font-semibold text-gray-900">Loyalty</div>
+                                        <div class="text-sm text-gray-600">Keep customers coming back with rewards that matter</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gradient-to-br from-storehub-orange/5 to-storehub-orange/10 p-12 flex items-center">
+                            <img src="https://plus.unsplash.com/premium_photo-1663932464937-e677ddfc1d55?w=2940&amp;q=80" alt="Restaurant POS" class="w-full h-64 object-cover rounded-xl shadow-lg">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Retail -->
+                <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                        <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-12 flex items-center">
+                            <img src="https://plus.unsplash.com/premium_photo-1664202526047-405824c633e7?w=2767&amp;q=80" alt="Retail Store" class="w-full h-64 object-cover rounded-xl shadow-lg">
+                        </div>
+                        <div class="pt-12 pr-12 pb-12 pl-12">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mr-4">
+                                    <span class="text-3xl">🛍️</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-3xl font-semibold text-gray-900">Retail</h3>
+                                    <p class="text-gray-600">Fashion, electronics, grocery, and specialty stores</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="flex items-start">
+                                    
+                                    <div class="">
+                                        <div class="font-semibold text-gray-900">Marketplace Integration</div>
+                                        <div class="text-sm text-gray-600">Sync your offline and online stores</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    
+                                    <div class="">
+                                        <div class="font-semibold text-gray-900">Multi-location Inventory</div>
+                                        <div class="text-sm text-gray-600">Centralised stock management</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    
+                                    <div class="">
+                                        <div class="font-semibold text-gray-900">Customer Database</div>
+                                        <div class="text-sm text-gray-600">Build customer relationships</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    
+                                    <div class="">
+                                        <div class="font-semibold text-gray-900">Loyalty Programs</div>
+                                        <div class="text-sm text-gray-600">Reward repeat customers</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services -->
+                <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                        <div class="p-12">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mr-4">
+                                    <span class="text-3xl">💅</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-3xl font-semibold text-gray-900">Services</h3>
+                                    <p class="text-gray-600">Salons, spas, clinics, and professional services</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="flex items-start">
+                                    
+                                    <div class="">
+                                        <div class="font-semibold text-gray-900">Appointment Booking</div>
+                                        <div class="text-sm text-gray-600">Schedule and manage appointments</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Staff Management</div>
+                                        <div class="text-sm text-gray-600">Track performance and commissions</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    
+                                    <div class="">
+                                        <div class="font-semibold text-gray-900">Service Packages</div>
+                                        <div class="text-sm text-gray-600">Create bundled offerings</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Automated Customer Loyalty</div>
+                                        <div class="text-sm text-gray-600">Collect customer data and keep them coming back</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-12 flex items-center">
+                            <img src="https://plus.unsplash.com/premium_photo-1664910181909-9aa65c001ecf?w=2940&amp;q=80" alt="Service Business" class="w-full h-64 object-cover rounded-xl shadow-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="bg-white border-gray-100 border-t pt-16 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-8">Trusted by 17,000+ businesses across Malaysia</h2>
+                
+                <!-- Brand Logos -->
+                <div class="overflow-hidden mb-12">
+                    <div class="logo-scroll flex space-x-12 whitespace-nowrap">
+                        <!-- First set of logos -->
+                        <div class="flex items-center space-x-12 flex-shrink-0">
+                            <img src="images/Big-Apple.png" alt="Big Apple" class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                            <img src="images/Niko-Neko.png" alt="Niko Neko" class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                            <img src="images/Fei-Fan-Cropped.png" alt="Fei Fan" class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                            <img src="images/IMIKA-FONT-BLACK-1920-01-1-1536x477.png" alt="Imika" class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                            <img src="images/bulan-bintang-logo-1040x800-1-768x591.png" alt="Bulan Bintang" class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                            <img src="images/1157691_448719831902617_375820951_n-150x150.png" alt="Partner Business" class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                        </div>
+                        <!-- Duplicate set for seamless loop -->
+                        <div class="flex items-center space-x-12 flex-shrink-0">
+                            <img src="images/Big-Apple.png" alt="Big Apple" class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                            <img src="images/Niko-Neko.png" alt="Niko Neko" class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                            <img src="images/Fei-Fan-Cropped.png" alt="Fei Fan" class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                            <img src="images/IMIKA-FONT-BLACK-1920-01-1-1536x477.png" alt="Imika" class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                            <img src="images/bulan-bintang-logo-1040x800-1-768x591.png" alt="Bulan Bintang" class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                            <img src="images/1157691_448719831902617_375820951_n-150x150.png" alt="Partner Business" class="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Customer Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center mb-12">
+                <div class="bg-gradient-to-br from-storehub-orange/10 to-storehub-orange/5 p-6 rounded-2xl">
+                    <div class="text-storehub-orange text-4xl font-bold mb-2">17,000+</div>
+                    <div class="text-gray-600 font-medium">Active Merchants</div>
+                    <div class="text-sm text-gray-500 mt-1">Growing daily</div>
+                </div>
+                <div class="bg-gradient-to-br from-green-100 to-green-50 p-6 rounded-2xl">
+                    <div class="text-green-600 text-4xl font-bold mb-2">RM2.5B+</div>
+                    <div class="text-gray-600 font-medium">Transactions Processed</div>
+                    <div class="text-sm text-gray-500 mt-1">This year alone</div>
+                </div>
+                <div class="bg-gradient-to-br from-blue-100 to-blue-50 p-6 rounded-2xl">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">99.9%</div>
+                    <div class="text-gray-600 font-medium">Uptime Guarantee</div>
+                    <div class="text-sm text-gray-500 mt-1">Reliable service</div>
+                </div>
+                <div class="bg-gradient-to-br from-purple-100 to-purple-50 p-6 rounded-2xl">
+                    <div class="text-4xl font-bold text-purple-600 mb-2">4.8/5</div>
+                    <div class="text-gray-600 font-medium">Customer Rating</div>
+                    <div class="text-sm text-gray-500 mt-1">Based on 2,000+ reviews</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Testimonials Section -->
+    <section class="bg-gradient-to-br from-gray-50 to-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-semibold text-gray-900 mb-4">See how Malaysian businesses transformed with StoreHub</h2>
+                <p class="text-xl text-gray-600">Real stories from real business owners, just like you</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Video Testimonial 1 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="relative">
+                        <iframe 
+                            class="w-full aspect-video" 
+                            src="https://www.youtube.com/embed/_P93EzDr5F4" 
+                            title="How Fino Piza Runs Daily Without a Hitch" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-semibold text-gray-900 mb-4">How Fino Piza Runs Daily Without a Hitch</h3>
+                        <p class="text-gray-600 text-sm mb-6">While others shut down for holidays, Fino Piza keeps serving. Their secret? A system that works – even when they're not in-store.</p>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-storehub-orange/10 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-sm">🍽️</span>
+                            </div>
+                            <div>
+                                <div class="font-medium text-gray-900 text-sm">Fino Piza</div>
+                                <div class="text-gray-500 text-xs mt-1">TTDI | Subang Jaya</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Testimonial 2 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="relative">
+                        <iframe 
+                            class="w-full aspect-video" 
+                            src="https://www.youtube.com/embed/bkdXJa2HI9c" 
+                            title="Retail Store Transformation" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-8 pb-16">
+                        <h3 class="font-semibold text-gray-900 mb-4">Lean Team? No Problem.</h3>
+                        <p class="text-gray-600 text-sm mb-6">80+ menu items, a 3-person team team, but zero order mix-ups. How? It's all thanks to QR Order & Pay.</p>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-sm">🍴</span>
+                            </div>
+                            <div>
+                                <div class="font-medium text-gray-900 text-sm">Thosai Cafe</div>
+                                <div class="text-gray-500 text-xs mt-1">Mutiara Damansara</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Testimonial 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="relative">
+                        <iframe 
+                            class="w-full aspect-video" 
+                            src="https://www.youtube.com/embed/SzuJkF7QXdQ" 
+                            title="Business Growth Story" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-semibold text-gray-900 mb-4">Loyalty That Drives Results</h3>
+                        <p class="text-gray-600 text-sm mb-6">Sixteen Sports boosted revenue by 20% by turning first-time buyers into loyal customers with cashback.</p>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-sm">🏸</span>
+                            </div>
+                            <div>
+                                <div class="font-medium text-gray-900 text-sm">Sixteen Sports</div>
+                                <div class="text-gray-500 text-xs mt-1">Cheras</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="text-center mt-12">
+                <p class="text-gray-600 mb-6">Ready to write your own success story?</p>
+                <button class="bg-storehub-orange text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-bold-orange transition-colors shadow-lg">
+                    Get a Free Demo
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Testimonials -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl sm:px-6 lg:px-8 mr-auto ml-auto pr-4 pl-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-semibold text-gray-900 mb-4">What our customers say</h2>
+                <p class="text-xl text-gray-600">Real stories from businesses like yours</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-2xl">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=100&amp;q=80" alt="Customer" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <div class="font-semibold text-gray-900">Ahmad Rahman</div>
+                            <div class="text-sm text-gray-600">Owner, Warung Pak Ahmad</div>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                    <p class="text-gray-700">"StoreHub completely transformed how we manage our restaurant. The kitchen display system reduced order errors by 80% and our customers love the QR ordering."</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-2xl">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616c36ce4b7?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=100&amp;q=80" alt="Customer" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <div class="font-semibold text-gray-900">Sarah Lim</div>
+                            <div class="text-sm text-gray-600">Manager, Fashion Forward Boutique</div>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                    <p class="text-gray-700">"The inventory management features are incredible. We can track stock across all three locations and never run out of popular items anymore."</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-2xl">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=100&amp;q=80" alt="Customer" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <div class="font-semibold text-gray-900">David Tan</div>
+                            <div class="text-sm text-gray-600">Owner, Elite Hair Salon</div>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                    <p class="text-gray-700">"The appointment booking system integrated with our POS has streamlined our operations. Client satisfaction is at an all-time high!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="bg-gray-50 pt-20 pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-semibold text-gray-900 mb-4">Powerful features for your business</h2>
+                <p class="text-xl text-gray-600">Everything you need to run your business efficiently</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <div class="w-12 h-12 bg-storehub-orange/10 flex rounded-lg mb-6 items-center justify-center">
+                        <i class="fas fa-cash-register text-storehub-orange text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Smart POS System</h3>
+                    <p class="text-gray-600">Process transactions quickly with our intuitive point-of-sale system designed for speed and efficiency.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Real-time Analytics</h3>
+                    <p class="text-gray-600">Get insights into your sales, inventory, and customer behavior with comprehensive reporting tools.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-boxes text-purple-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Inventory Management</h3>
+                    <p class="text-gray-600">Track stock levels, set reorder alerts, and manage your inventory across multiple locations.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-credit-card text-green-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Multiple Payments</h3>
+                    <p class="text-gray-600">Accept cash, cards, e-wallets, and QR payments all in one seamless checkout experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-gradient-to-r from-storehub-orange to-bold-orange py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
+                Ready to earn more and do less?
+            </h2>
+            <p class="text-xl text-orange-100 mb-8 max-w-2xl mx-auto">
+                Join thousands of Malaysian businesses already using StoreHub to streamline operations and boost sales. Start your free trial today!
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="text-storehub-orange hover:bg-gray-100 text-lg font-bold bg-white rounded-lg pt-4 pr-8 pb-4 pl-8 shadow-lg">Get a Free Demo</button>
+                <button class="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-storehub-orange">
+                    Talk to Sales
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-storehub-black text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <!-- Company Info -->
+                <div class="lg:col-span-2">
+                    <a href="/">
+                        <img src="images/StoreHub Logo_Full Positive Colour Reverse.png" alt="StoreHub" class="h-12 w-auto mb-4 ml-0">
+                    </a>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Malaysia's leading point-of-sale system helping businesses grow with smart technology and seamless integrations.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/StoreHub" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-storehub-orange transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://x.com/storehubpos" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-storehub-orange transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/storehub" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-storehub-orange transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.instagram.com/storehubpos" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-storehub-orange transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@StorehubApp/" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-storehub-orange transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@storehub" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-storehub-orange transition-colors">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Products -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Products</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-storehub-orange transition-colors">POS System</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-storehub-orange transition-colors">Kitchen Display</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-storehub-orange transition-colors">QR Order & Pay</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-storehub-orange transition-colors">Inventory Management</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-storehub-orange transition-colors">Analytics</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-storehub-orange transition-colors">E-Invoice</a></li>
+                    </ul>
+                </div>
+
+                <!-- Business Types -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Business Types</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-storehub-orange transition-colors">Restaurants</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-storehub-orange transition-colors">Cafes & Bakeries</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-storehub-orange transition-colors">Retail Stores</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-storehub-orange transition-colors">Grocery & Supermarket</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-storehub-orange transition-colors">Salons & Spas</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-storehub-orange transition-colors">Professional Services</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Support</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-storehub-orange transition-colors">Help Center</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-storehub-orange transition-colors">Contact Support</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-storehub-orange transition-colors">Training Resources</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-storehub-orange transition-colors">Hardware Support</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-storehub-orange transition-colors">Developer API</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-storehub-orange transition-colors">System Status</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Footer -->
+            <div class="border-t border-gray-700 mt-12 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="text-gray-400 text-sm mb-4 md:mb-0">
+                        © 2025 StoreHub. All rights reserved.
+                    </div>
+                    <div class="flex space-x-6 text-sm">
+                        <a href="#" class="text-gray-400 hover:text-storehub-orange transition-colors">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-storehub-orange transition-colors">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-storehub-orange transition-colors">Cookie Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-storehub-orange transition-colors">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
